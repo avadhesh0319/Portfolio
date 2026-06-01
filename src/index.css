@@ -1,0 +1,178 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', sans-serif;
+  --font-display: 'Space Grotesk', sans-serif;
+  --color-dark: #050505;
+  --color-dark-light: #0c0c0c;
+  --color-dark-card: #111111;
+  --color-dark-border: #1e1e1e;
+  --color-accent: #5F84A2;
+  --color-accent-dim: #91AEC4;
+  --color-accent-light: #B7D0E1;
+  --color-hover-accent: #CADEED;
+  --color-border-accent: rgba(145, 174, 196, 0.18);
+  --color-overlay-light: rgba(145, 174, 196, 0.04);
+  --color-overlay-medium: rgba(145, 174, 196, 0.08);
+  --color-overlay-strong: rgba(145, 174, 196, 0.12);
+  --color-shadow-soft: rgba(145, 174, 196, 0.08);
+  --color-shadow-hover: rgba(145, 174, 196, 0.12);
+  --color-gradient-accent: linear-gradient(135deg, #194569 0%, #5F84A2 45%, #91AEC4 100%);
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #B7D0E1;
+  --color-text-muted: #91AEC4;
+}
+
+* {
+  cursor: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #050505;
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(145, 174, 196, 0.3);
+  color: #fff;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-accent);
+  border-radius: 2px;
+}
+
+/* Marquee — left */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+/* Marquee — right (reverse) */
+@keyframes marquee-reverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+.animate-marquee-reverse {
+  animation: marquee-reverse 80s linear infinite;
+}
+
+/* Name belt — right-to-left, very slow */
+@keyframes namebelt {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-namebelt {
+  animation: namebelt 120s linear infinite;
+}
+
+/* Spin slow */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.animate-spin-slow {
+  animation: spin-slow 14s linear infinite;
+}
+
+/* Float */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Pulse glow */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 5px var(--color-shadow-soft), 0 0 10px rgba(145, 174, 196, 0.1); }
+  50% { box-shadow: 0 0 15px rgba(145, 174, 196, 0.3), 0 0 30px rgba(145, 174, 196, 0.15); }
+}
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+/* Gradient text */
+.gradient-text {
+  background: var(--color-gradient-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glassmorphism */
+.glass {
+  background: rgba(17, 17, 17, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--color-overlay-medium);
+}
+
+.glass-strong {
+  background: rgba(10, 10, 10, 0.8);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+}
+
+/* Neon border */
+.neon-border {
+  border: 1px solid var(--color-overlay-medium);
+  box-shadow: 0 0 10px rgba(145, 174, 196, 0.05), inset 0 0 10px rgba(145, 174, 196, 0.02);
+}
+
+.neon-border-hover:hover {
+  border-color: rgba(145, 174, 196, 0.5);
+  box-shadow: 0 0 20px rgba(145, 174, 196, 0.15), inset 0 0 20px rgba(145, 174, 196, 0.05);
+}
+
+/* Smoke background canvas */
+.smoke-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Particle */
+@keyframes particle-rise {
+  0% { transform: translateY(100vh) scale(0); opacity: 0; }
+  20% { opacity: 1; }
+  100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+}
+
+/* Typing cursor */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+.typing-cursor::after {
+  content: '|';
+  animation: blink 1s step-end infinite;
+  color: var(--color-accent);
+  margin-left: 2px;
+}
+
+/* Hide scrollbar but keep scroll functionality */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
